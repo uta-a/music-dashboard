@@ -1,8 +1,5 @@
-'use client'
-
 import { motion, useInView } from 'motion/react'
 import { useRef } from 'react'
-import styles from './ChartPlaceholder.module.css'
 
 interface ChartPlaceholderProps {
   title: string
@@ -14,11 +11,11 @@ interface ChartPlaceholderProps {
 function BarChart() {
   const heights = [45, 72, 58, 88, 65, 92, 40, 78, 55, 85, 68, 95]
   return (
-    <div className={styles.barChart}>
+    <div className="w-full h-full flex items-end gap-1.5 pt-2">
       {heights.map((h, i) => (
         <motion.div
           key={i}
-          className={styles.bar}
+          className="flex-1 rounded-t min-h-1 transition-[background] duration-200 hover:brightness-130"
           initial={{ height: 0 }}
           animate={{ height: `${h}%` }}
           transition={{
@@ -42,8 +39,8 @@ function BarChart() {
 
 function LineChart() {
   return (
-    <div className={styles.lineChart}>
-      <svg viewBox="0 0 400 120" fill="none" preserveAspectRatio="none">
+    <div className="w-full h-full">
+      <svg viewBox="0 0 400 120" fill="none" preserveAspectRatio="none" className="w-full h-full">
         <defs>
           <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="var(--color-secondary)" stopOpacity="0.3" />
@@ -91,8 +88,8 @@ function DonutChart() {
   let offset = 0
 
   return (
-    <div className={styles.donutChart}>
-      <svg viewBox="0 0 160 160">
+    <div className="w-full h-full flex items-center justify-center relative">
+      <svg viewBox="0 0 160 160" className="w-40 h-40">
         {segments.map((seg, i) => {
           const dashLen = (seg.pct / 100) * circumference
           const dashOffset = -offset
@@ -117,9 +114,9 @@ function DonutChart() {
           )
         })}
       </svg>
-      <div className={styles.donutCenter}>
-        <span className={styles.donutValue}>847K</span>
-        <span className={styles.donutLabel}>Total</span>
+      <div className="absolute flex flex-col items-center">
+        <span className="text-2xl font-extrabold text-[var(--color-primary)] tracking-tight" style={{ fontFamily: 'var(--font-display)', letterSpacing: '-0.02em' }}>847K</span>
+        <span className="text-[0.688rem] text-[var(--color-muted)] uppercase tracking-[0.05em]">合計</span>
       </div>
     </div>
   )
@@ -129,7 +126,7 @@ function HeatmapChart() {
   const rows = 7
   const cols = 12
   return (
-    <div className={styles.heatmap}>
+    <div className="w-full grid grid-cols-12 gap-[3px]">
       {Array.from({ length: rows * cols }, (_, i) => {
         const intensity = Math.random()
         const color =
@@ -142,7 +139,7 @@ function HeatmapChart() {
         return (
           <motion.div
             key={i}
-            className={styles.heatCell}
+            className="aspect-square rounded-[3px] transition-transform duration-150 hover:scale-140 hover:z-[2]"
             style={{ background: color, opacity }}
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity }}
@@ -174,23 +171,23 @@ export default function ChartPlaceholder({
   return (
     <motion.div
       ref={ref}
-      className={`${styles.chartCard} ${span === 2 ? styles.spanTwo : ''}`}
+      className={`bg-[var(--color-surface)] border border-[var(--color-border)] rounded-[20px] p-6 flex flex-col min-h-[280px] ${span === 2 ? 'col-span-2 max-[900px]:col-span-1' : ''}`}
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className={styles.chartHeader}>
+      <div className="flex items-start justify-between mb-5">
         <div>
-          <h3 className={styles.chartTitle}>{title}</h3>
-          {subtitle && <p className={styles.chartSubtitle}>{subtitle}</p>}
+          <h3 className="text-base font-bold tracking-tight text-[var(--color-primary)] mb-0.5" style={{ fontFamily: 'var(--font-display)', letterSpacing: '-0.01em' }}>{title}</h3>
+          {subtitle && <p className="text-xs text-[var(--color-muted)]">{subtitle}</p>}
         </div>
-        <button className={styles.moreBtn}>
+        <button className="bg-transparent border border-[var(--color-border)] rounded-[6px] text-[var(--color-muted)] w-8 h-8 flex items-center justify-center cursor-pointer transition-[background,color] duration-200 hover:bg-[var(--color-surface-elevated)] hover:text-[var(--color-primary)]">
           <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>
             more_horiz
           </span>
         </button>
       </div>
-      <div className={styles.chartBody}>
+      <div className="flex-1 flex items-end">
         <Chart />
       </div>
     </motion.div>

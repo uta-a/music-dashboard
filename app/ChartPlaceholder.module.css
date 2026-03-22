@@ -1,0 +1,147 @@
+.chartCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+}
+
+.spanTwo {
+  grid-column: span 2;
+}
+
+.chartHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.chartTitle {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+  margin-bottom: 0.2rem;
+}
+
+.chartSubtitle {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.moreBtn {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-muted);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 200ms ease, color 200ms ease;
+}
+
+.moreBtn:hover {
+  background: var(--color-surface-elevated);
+  color: var(--color-primary);
+}
+
+.chartBody {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* Bar chart */
+.barChart {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  padding-top: 0.5rem;
+}
+
+.bar {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+  min-height: 4px;
+  transition: background 200ms ease;
+}
+
+.bar:hover {
+  filter: brightness(1.3);
+}
+
+/* Line chart */
+.lineChart {
+  width: 100%;
+  height: 100%;
+}
+
+.lineChart svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Donut chart */
+.donutChart {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.donutChart svg {
+  width: 160px;
+  height: 160px;
+}
+
+.donutCenter {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.donutValue {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+}
+
+.donutLabel {
+  font-size: 0.688rem;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Heatmap */
+.heatmap {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 3px;
+}
+
+.heatCell {
+  aspect-ratio: 1;
+  border-radius: 3px;
+  transition: transform 150ms ease;
+}
+
+.heatCell:hover {
+  transform: scale(1.4);
+  z-index: 2;
+}

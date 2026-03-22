@@ -1,0 +1,160 @@
+.card {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  overflow: hidden;
+  cursor: pointer;
+  transform: rotate(var(--card-rotate, 0deg)) translateY(var(--card-offset-y, 0px));
+}
+
+/* Size variations */
+.cardLarge {
+  grid-column: span 2;
+  padding: 2rem;
+}
+
+.cardMedium {
+  grid-column: span 1;
+}
+
+.cardSmall {
+  grid-column: span 1;
+  padding: 1.25rem;
+}
+
+/* Accent glow variations */
+.accentGreen {
+  box-shadow: var(--shadow-card), var(--shadow-glow-green);
+  border-color: rgba(180, 255, 57, 0.15);
+}
+
+.accentGreen .iconWrap {
+  background: rgba(180, 255, 57, 0.1);
+  color: var(--color-secondary);
+}
+
+.accentGreen .sparkline {
+  color: var(--color-secondary);
+}
+
+.accentPink {
+  box-shadow: var(--shadow-card), var(--shadow-glow-pink);
+  border-color: rgba(255, 45, 85, 0.15);
+}
+
+.accentPink .iconWrap {
+  background: rgba(255, 45, 85, 0.1);
+  color: var(--color-accent);
+}
+
+.accentPink .sparkline {
+  color: var(--color-accent);
+}
+
+.accentNeutral {
+  box-shadow: var(--shadow-card);
+}
+
+.accentNeutral .iconWrap {
+  background: var(--color-surface-elevated);
+  color: var(--color-muted);
+}
+
+.accentNeutral .sparkline {
+  color: var(--color-muted);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-bottom: 1rem;
+}
+
+.iconWrap {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.valueRow {
+  margin-bottom: 0.5rem;
+}
+
+.value {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.cardLarge .value {
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.cardMedium .value {
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+}
+
+.cardSmall .value {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+.changeRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.change {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 100px;
+}
+
+.changeUp {
+  background: rgba(180, 255, 57, 0.1);
+  color: var(--color-secondary);
+}
+
+.changeDown {
+  background: rgba(255, 45, 85, 0.1);
+  color: var(--color-accent);
+}
+
+.period {
+  font-size: 0.688rem;
+  color: var(--color-muted);
+}
+
+.sparkline {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 32px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.sparkline svg {
+  width: 100%;
+  height: 100%;
+}
